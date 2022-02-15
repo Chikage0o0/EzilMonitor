@@ -44,6 +44,6 @@ def main():
             f.write(str(ii))
 
 if __name__ == '__main__':
-    address = os.environ["address"]
-    token=os.environ["token"]
+    address = os.environ["ADDRESS"]
+    token=os.environ["TOKEN"]
     main()

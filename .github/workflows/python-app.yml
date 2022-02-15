@@ -6,7 +6,9 @@ name: Python application
 on:
   schedule:
     - cron: '*/5 * * * *'
-
+  watch:
+    types: started
+    
 jobs:
   build:
 
@@ -31,6 +33,6 @@ jobs:
         key: ${{ runner.os }}-${{ hashFiles('**/i.txt') }}
     - name: 'Working'
       env:
-        address: ${{ secrets.address }}
-        token: ${{ secrets.token }}
+        ADDRESS: ${{ secrets.ADDRESS }}
+        TOKEN: ${{ secrets.TOKEN }}
       run: python main.py

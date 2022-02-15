@@ -21,17 +21,26 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests
-    - name: Cache
+
+    - name: Cache-pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-    
+    - name: Cache-data
       uses: actions/cache@v2.1.7
       with:
-        # A list of files, directories, and wildcard patterns to cache and restore
         path: i.txt
-        # An explicit key for restoring and saving the cache
         key: ${{ runner.os }}
+
+    - name: Install dependencies
+      if: steps.cache-venv.outputs.cache-hit != 'true'
+      run: |
+           pip install -r requirements.txt
+
+
     - name: 'Working'
       env:
         ADDRESS: ${{ secrets.ADDRESS }}

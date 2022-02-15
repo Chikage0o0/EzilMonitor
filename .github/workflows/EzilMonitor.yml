@@ -5,7 +5,7 @@ name: EzilMonitor
 on:
   workflow_dispatch:
 #  schedule:
-#    - cron: '* */2 * * *'
+#    - cron: '0 */2 * * *'
   watch:
     types: started
 

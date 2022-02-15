@@ -14,6 +14,16 @@
 ## 查看Actions
 如果没有意外的话，已经可以运行了，1min自动监控一次
 
+现在打开`.github/workflows/EzilMonitor.yml`文件，并编辑将
+```
+#  schedule:
+#    - cron: '0 */2 * * *'
+```
+改为
+```
+  schedule:
+    - cron: '0 */2 * * *'
+```
    
    
 

@@ -6,8 +6,6 @@ on:
   workflow_dispatch:
 #  schedule:
 #    - cron: '0 */2 * * *'
-  watch:
-    types: started
 
 jobs:
   build:

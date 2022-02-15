@@ -18,7 +18,7 @@ def sendMessage(i):
         headers = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36 Edg/98.0.1108.50'
         }
-        url="http://www.pushplus.plus/send?token="+token+"&title=掉线&content="+i+"&template=txt"
+        url="http://www.pushplus.plus/send?token="+token+"&title=EZIL通知&content="+i+"&template=txt"
         res = requests.get(url, headers=headers,timeout=10)
     except:
         print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))+" 无法通知api")
@@ -34,15 +34,19 @@ def main():
         ii=get()
         print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))+" 在线"+str(ii)+"台机器")
         if ii>i:
-            with open("i.txt",'w') as f:
-                f.write(str(ii))
+            if ii==-1:
+                sendMessage("无法访问Ezil api")
+            else:
+                sendMessage("上线了"+str(ii-i)+"台机器")
+                with open("i.txt",'w') as f:
+                    f.write(str(ii))
         if (ii<i):
             if ii==-1:
                 sendMessage("无法访问Ezil api")
             else:
                 sendMessage("掉线了"+str(i-ii)+"台机器")
-            with open("i.txt",'w') as f:
-                f.write(str(ii))
+                with open("i.txt",'w') as f:
+                    f.write(str(ii))
         time.sleep(60)
 
 if __name__ == '__main__':

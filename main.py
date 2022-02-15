@@ -18,7 +18,7 @@ def sendMessage(i):
         headers = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36 Edg/98.0.1108.50'
         }
-        url="http://www.pushplus.plus/send?token=80552687615d49fcb2974e75958f82f8&title=掉线&content="+i+"&template=txt"
+        url="http://www.pushplus.plus/send?token="+token+"&title=掉线&content="+i+"&template=txt"
         res = requests.get(url, headers=headers,timeout=10)
     except:
         print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))+" 无法通知api")

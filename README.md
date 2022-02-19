@@ -28,5 +28,7 @@
 
 ## 腾讯云函数
 推荐
-   
+1. 将tencent.py内容粘贴进入云函数，运行环境Python3.6
+2. 设置环境变量`address`,`token`和`tmpfile`
+3. tmpfile推荐放在挂载的文件系统中，如果挂载文件系统，设置为`/mnt/i.txt`,不挂载则为`/tmp/i.txt`
 
